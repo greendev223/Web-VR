@@ -54,7 +54,8 @@ const Building = () => {
       
       {Object.entries(f.nodes).map(([name, obj]) => {
         if(obj['name']==='Navmesh')
-          return <mesh geometry={obj['geometry']} scale={[0.91, 0.91, 0.91]} material={obj['material']} />      
+        // return <mesh geometry={obj['geometry']} scale={[0.91, 0.91, 0.91]} material={obj['material']} /> 
+          return <mesh geometry={obj['geometry']} scale={[1, 1, 1]} material={obj['material']} />
         else
           return <ObjMesh key={name} geometry={obj['geometry']} material={obj['material']}/>        
       })}
