@@ -1,0 +1,51 @@
+{
+  "name": "gallery",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@artsy/fresnel": "^3.4.0",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@react-three/cannon": "^4.9.0",
+    "@react-three/drei": "^8.10.4",
+    "@react-three/fiber": "^7.0.26",
+    "babel-plugin-glsl": "^1.0.0",
+    "babel-plugin-styled-components": "^2.0.2",
+    "glsl-random": "^0.0.5",
+    "next": "^12.1.0",
+    "nipplejs": "^0.9.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-media": "^1.10.0",
+    "react-spring": "^9.4.3",
+    "three": "^0.137.5",
+    "three-pathfinding": "^1.1.0",
+    "three-stdlib": "^2.8.6",
+    "zustand": "^3.7.0"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^12.0.10",
+    "@types/node": "^17.0.21",
+    "@types/react": "^17.0.39",
+    "autoprefixer": "^10.4.2",
+    "file-loader": "^6.2.0",
+    "glslify": "^7.1.1",
+    "glslify-loader": "^2.0.0",
+    "next-compose-plugins": "^2.2.1",
+    "next-offline": "^5.0.5",
+    "next-transpile-modules": "^9.0.0",
+    "postcss": "^8.4.6",
+    "raw-loader": "^4.0.2",
+    "tailwindcss": "^3.0.18",
+    "typescript": "^4.6.2",
+    "url-loader": "^4.1.1"
+  },
+  "scripts": {
+    "lint": "yarn prettier && yarn eslint",
+    "dev": "next dev",
+    "build": "next build",
+    "export": "EXPORT=true next build && EXPORT=true next export",
+    "analyze": "ANALYZE=true next build",
+    "start": "next start"
+  }
+}

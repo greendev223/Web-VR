@@ -1,0 +1,417 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #__next {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-weight: normal;
+    font-style: normal;
+    src: url('/fonts/Inter-Regular.ttf');
+  }
+
+  #root,
+  body,
+  html,
+  canvas {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    position: fixed;
+    overflow: hidden;
+    overscroll-behavior-y: none;
+    background: #272730;
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+      'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .none {
+    display: none;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #272730c0;
+    z-index: 10;
+  }
+
+  .welcome {
+    color: white;
+    font-size: 5rem;
+  }
+
+  .start {
+    position: relative;
+    margin-top: 52vh;
+    color: white;
+    font-size: 5vw;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .controlsL {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: unset;
+  }
+
+  .controlsR {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: unset;
+  }
+
+  .controlsTR {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 12%;
+  }
+
+  @media (min-width: 1024px) {
+    .controlsL {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 30%;
+    }
+
+    .controlsR {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 6%;
+    }
+  }
+
+  .dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    cursor: pointer;
+    border: 2px solid white;
+    z-index: 10;
+  }
+
+  .loading {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: #171717;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+  }
+
+  .loading-bar-container {
+    width: 200px;
+    height: 3px;
+    background: #272727;
+  }
+
+  .loading-bar {
+    height: 3px;
+    background: white;
+  }
+
+  .info-container {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    bottom: 2.2vh;
+    right: 2vw;
+    width: 280px;
+    z-index: 10000;
+  }
+
+  .info-container .info-topbar {
+    background: rgb(22, 22, 22);
+    color: white;
+    text-align: right;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .info-container .info-content {
+    padding: 4px 16px;
+  }
+
+  .info-container .info-content .info-action {
+    margin: 12px 0px 8px;
+    padding: 8px 12px;
+    color: rgba(0, 0, 0, 0.8);
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    text-align: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+  }
+
+  .modal {
+    width: 95vw;
+    height: 95vh;
+    color: #fff;
+    background: rgb(25, 25, 25);
+    position: absolute;
+    z-index: 90;
+    top: 50%;
+    left: 50%;
+  }
+
+  .modal-header {
+    position: absolute;
+    right: 0;
+  }
+
+  .modal-header button {
+    background: black;
+    color: white;
+    z-index: 9999;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 25px;
+  }
+
+  .artwork-details-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+
+  .artwork-details-container > div:first-child {
+    min-width: 500px;
+    width: 500px;
+    min-height: 600px;
+    height: 100vh;
+    overflow-x: scroll;
+    position: relative;
+    color: white;
+    padding: 16px 24px 16px 32px;
+    transition: all 0.5s ease 0s;
+    flex: 1.5 1 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: rgb(0 0 0 / 4%) 0px 24px 32px, rgb(0 0 0 / 4%) 0px 16px 24px, rgb(0 0 0 / 4%) 0px 4px 8px,
+      rgb(0 0 0 / 6%) 0px 0px 1px;
+  }
+
+  .artwork-details-container > div:first-child p {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0px 0px 1rem;
+  }
+
+  .artwork-details-container > div:first-child > div {
+    padding: 16px 0px;
+    width: 100%;
+    flex: 1 1 0%;
+    margin: 0px 0px 2rem;
+  }
+
+  .artwork-details-container > div:first-child > div > span {
+    font-size: 11px;
+    font-weight: 500;
+    color: rgb(174, 174, 174);
+  }
+
+  .artwork-details-container > div:first-child > div > p {
+    white-space: pre-wrap;
+    font-size: 14px;
+    margin: 0px;
+    overflow-y: auto;
+    overflow-wrap: break-word;
+  }
+
+  .artwork-details-container > div:last-child {
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    flex: 8 1 0%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.6) 0%, rgb(222, 222, 222) 26%, rgb(242, 239, 239) 100%);
+  }
+
+  @media (max-width: 800px) {
+    .artwork-details-container {
+      height: -webkit-fill-available;
+      width: 100%;
+      min-width: 100%;
+      border-radius: 0px;
+      flex-direction: column-reverse;
+      overflow: auto !important;
+    }
+
+    .artwork-details-container > div:first-child {
+      min-height: 330px;
+      height: 100%;
+      display: flex;
+      align-items: flex-start;
+      min-width: 100%;
+      width: 100%;
+      padding: 0px;
+      -webkit-box-pack: inherit;
+      justify-content: inherit;
+      word-break: break-all;
+    }
+
+    .artwork-details-container > div:last-child {
+      max-width: 100%;
+      width: 100%;
+      height: -webkit-fill-available;
+      flex: 6 1 0%;
+    }
+  }
+
+  .artwork-img {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .artwork-img .artwork-img-container {
+    cursor: zoom-in;
+    flex: 0 1 0%;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+  }
+
+  .artwork-img .artwork-img-container img {
+    width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .button-action {
+    margin: 12px 0px 8px;
+    padding: 8px 12px;
+    color: rgba(0, 0, 0, 0.8);
+    background: rgb(0, 255, 212);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    text-align: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+  }
+
+  .button-action:hover {
+    background: rgb(20, 120, 103);
+  }
+
+  #mobileInterface {
+    position: fixed;
+    width: calc(100% - 20px);
+    height: 50vh;
+    pointer-events: none;
+    z-index: 5;
+    bottom: 30px;
+    left: 30px;
+    touch-action: manipulation;
+  }
+
+  #mobileControllerWrapper {
+    pointer-events: auto;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+    width: 120px;
+    height: 120px;
+    z-index: 6;
+    touch-action: manipulation;
+    background-color: rgba(red, 0.2);
+  }
+
+  .menu-mobile {
+    position: fixed;
+    width: 45px;
+    height: 45px;
+    border-radius: 45px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    right: 5px;
+    bottom: 50%;
+    left: 10px;
+    top: 10px;
+    color: rgb(255, 255, 255);
+    background: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 5px;
+    z-index: 5;
+  }
+
+  .menu-mobile > img {
+    filter: invert(1);
+  }
+}
