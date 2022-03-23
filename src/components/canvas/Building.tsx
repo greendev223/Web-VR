@@ -24,7 +24,7 @@ const ObjMesh = (props:any) => {
     indices = props.geometry.index.array;
     if(vertices){
       for(let i=0;i<vertices.length;i++)
-        vertices[`${i}`]=vertices[`${i}`]*0.3
+        vertices[`${i}`]=vertices[`${i}`]*0.1
     }
     isMesh = true      
   }
@@ -33,7 +33,7 @@ const ObjMesh = (props:any) => {
     mass: 0.0,
   }))
 
-  return <mesh ref={ref} geometry={props.geometry} scale={isMesh?[1, 1, 1]:[3, 3, 3]} material={props.material} />
+  return <mesh ref={ref} geometry={props.geometry} material={props.material} />
 }
 
 const Building = () => {
